@@ -2,9 +2,9 @@ require 'formula'
 
 class PerconaServer < Formula
   homepage 'http://www.percona.com'
-  url 'http://www.percona.com/redir/downloads/Percona-Server-5.5/Percona-Server-5.5.29-29.4/source/Percona-Server-5.5.29-rel29.4.tar.gz'
-  version '5.5.29-29.4'
-  sha1 '0c02296414739a29e8a3c81ff7fab68a45d5b8a2'
+  url 'http://www.percona.com/redir/downloads/Percona-Server-5.5/Percona-Server-5.5.32-31.0/source/Percona-Server-5.5.32-rel31.0.tar.gz'
+  version '5.5.32-31.0'
+  sha1 'ec5bcf0acb7a6147c2b34b4b37d23da999c6218f'
 
   depends_on 'cmake' => :build
   depends_on 'readline'
@@ -103,6 +103,10 @@ class PerconaServer < Formula
     end
 
     ln_s "#{prefix}/support-files/mysql.server", bin
+
+    # Move mysqlaccess to libexec
+    mv "#{bin}/mysqlaccess", libexec
+    mv "#{bin}/mysqlaccess.conf", libexec
   end
 
   def caveats; <<-EOS.undent
@@ -144,8 +148,6 @@ class PerconaServer < Formula
       <string>#{opt_prefix}/bin/mysqld_safe</string>
       <key>RunAtLoad</key>
       <true/>
-      <key>UserName</key>
-      <string>#{`whoami`.chomp}</string>
       <key>WorkingDirectory</key>
       <string>#{var}</string>
     </dict>

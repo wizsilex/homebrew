@@ -1,9 +1,9 @@
 require 'formula'
 
 class Gpgme < Formula
-  homepage 'http://www.gnupg.org/gpgme.html'
-  url 'ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-1.4.0.tar.bz2'
-  sha1 '897e36c1d3f6595d69fb37c820aaa162daa0e369'
+  homepage 'http://www.gnupg.org/related_software/gpgme/'
+  url 'ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-1.4.1.tar.bz2'
+  sha1 'd6110763e7459214fd72705e87ebc682e3b5815e'
 
   depends_on 'gnupg'
   depends_on 'libgpg-error'
